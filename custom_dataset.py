@@ -36,3 +36,15 @@ class SegmentationDataset(Dataset):
     mask = torch.round(torch.Tensor(mask) / 255.0)
 
     return image, mask
+
+trainset = SegmentationDataset(train_df, get_train_augs())
+validset = SegmentationDataset(valid_df, get_valid_augs())
+
+print(f"Size of Trainset : {len(trainset)}")
+print(f"Size of Validset : {len(validset)}")
+
+idx = 21
+image, mask = trainset[idx]
+helper.show_image(image, mask)
+
+
